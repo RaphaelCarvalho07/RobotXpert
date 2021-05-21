@@ -112,3 +112,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Ignorar arquivos gerados após cada execução de log, report, output, etc
+results/
