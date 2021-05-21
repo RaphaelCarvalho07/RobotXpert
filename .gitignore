@@ -114,4 +114,4 @@ dmypy.json
 .pyre/
 
 # Ignorar arquivos gerados após cada execução de log, report, output, etc
-Logs/
+start/Logs/
