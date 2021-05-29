@@ -3,4 +3,5 @@ Documentation       Tudo começa aqui, meu arquivo base do projeto de automaçã
 
 Library             Browser
 
-Resource            actions/auth.robot    
+Resource            actions/auth.robot      
+Resource            actions/nav.robot     
