@@ -4,8 +4,7 @@ Documentation       Ações de autorização
 
 *** Keywords ***
 Go To Login Page
-    New Browser                 chromium                        false          
-    New Page                    https://bodytest-web-koi.herokuapp.com
+    Go To           https://bodytest-web-koi.herokuapp.com
 
 Login With
     [Arguments]     ${email}    ${pass}

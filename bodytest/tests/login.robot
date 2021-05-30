@@ -3,6 +3,9 @@ Documentation                   Suíte de testes de Login do Administrator
 
 Resource                        ../resources/base.robot
 
+Suite Setup                     Start Browser Session
+Test Teardown                   Take Screenshot
+
 ***Test Cases***
 Login do Administrador
     [tags]                      admin
@@ -10,8 +13,7 @@ Login do Administrador
     Login With                  admin@bodytest.com              pwd123                 
     User Should Be Logged In    Administrador
 
-    Take Screenshot
-
+    [Teardown]                  Clear LS And Take Screenshot
 
 Senha incorreta
     [tags]                      temp
@@ -19,6 +21,8 @@ Senha incorreta
     Login With                  admin@bodytest.com              abc123            
     
     Toaster Text Should Be      Usuário ou senha inválido
+
+    [Teardown]                  Thinking And Take Screenshot    2
 
 
 Email incorreto
