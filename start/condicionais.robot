@@ -12,7 +12,7 @@ Carteira de Motorista
     END
 
 Navegador
-    [tags]      browser
+    [tags]          browser
     ${browser}=     Set Variable        Firefox
 
     IF          '${browser}' == 'Firefox'
