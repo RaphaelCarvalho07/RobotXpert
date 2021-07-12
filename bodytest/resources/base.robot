@@ -8,7 +8,7 @@ Resource            actions/nav.robot
 
 *** Keywords ***
 Start Browser Session
-    New Browser                 chromium                        false          
+    New Browser                 chromium                        true          
     New Page                    about:blank
 
 Clear LS And Take Screenshot

@@ -16,17 +16,23 @@ Login do Administrador
     [Teardown]                  Clear LS And Take Screenshot
 
 Senha incorreta
-    [tags]                      temp
     Go To Login Page    
     Login With                  admin@bodytest.com              abc123            
     
-    Toaster Text Should Be      Usuário ou senha inválido
+    Toaster Text Should Be      Usuário e/ou senha inválidos.
+
+    [Teardown]                  Thinking And Take Screenshot    2
+
+Email não cadastrado
+    Go To Login Page    
+    Login With                  rapha@gmail.com              abc123            
+    
+    Toaster Text Should Be      Usuário e/ou senha inválidos.
 
     [Teardown]                  Thinking And Take Screenshot    2
 
 
 Email incorreto
-    [tags]                      temp
     Go To Login Page    
     Login With                  admin&bodytest.com              abc123            
     
@@ -34,21 +40,18 @@ Email incorreto
 
 
 Senha não informada
-    [tags]                      temp
     Go To Login Page    
     Login With                  admin&bodytest.com              ${EMPTY}             
 
     Alert Text Should be        A senha é obrigatória
 
 Email não informado
-    [tags]                      temp
     Go To Login Page    
     Login With                  ${EMPTY}                        abc123       
 
     Alert Text Should be        O e-mail é obrigatório
 
 Email e Senha não informados
-    [tags]                      temp
     Go To Login Page
     Login With                  ${EMPTY}                        ${EMPTY}
 
