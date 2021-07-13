@@ -15,7 +15,7 @@ Login With
 
 Toaster Text Should Be
     [Arguments]                     ${expected_text}
-        Wait For Elements State     css=.Toastify__toast-body >> text=${expected_text}     visible     5
+        Wait For Elements State     css=.Toastify__toast-body >> text=${expected_text}      visible     5
 
 Alert Text Should be
     [Arguments]                     ${expected_text}
