@@ -5,11 +5,18 @@ Library             Browser
 
 Resource            actions/auth.robot      
 Resource            actions/nav.robot  
+Resource            actions/students.robot
 
 *** Keywords ***
 Start Browser Session
     New Browser                 chromium                        true          
     New Page                    about:blank
+
+Start Admin Session
+    Start Browser Session
+    Go To Login Page
+    Login With                  admin@bodytest.com              pwd123                 
+    User Should Be Logged In    Administrador
 
 Clear LS And Take Screenshot
     Take Screenshot
