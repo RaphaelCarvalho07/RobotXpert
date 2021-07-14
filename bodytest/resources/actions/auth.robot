@@ -13,10 +13,6 @@ Login With
     Fill Text                   css=input[name=password]        ${pass}
     Click                       text=Entrar
 
-Toaster Text Should Be
-    [Arguments]                     ${expected_text}
-        Wait For Elements State     css=.Toastify__toast-body >> text=${expected_text}      visible     5
-
 Alert Text Should be
     [Arguments]                     ${expected_text}
         Wait For Elements State     css=form span >> text=${expected_text}                  visible     5
