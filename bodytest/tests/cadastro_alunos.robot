@@ -7,6 +7,7 @@ Suite Setup                     Start Admin Session
 
 *** Test Cases ***
 Novo aluno
+    Remove Student              koi@gmail.com
     Go To Students
     Go To Form Student
     New Student  
