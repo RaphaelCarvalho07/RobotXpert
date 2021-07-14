@@ -34,7 +34,6 @@ Não deve permitir email duplicado
     ...                         feet_tall=1.80   
     
     Insert Student              ${student}
-
     Go To Students
     Go To Form Student
     New Student                 ${student}
