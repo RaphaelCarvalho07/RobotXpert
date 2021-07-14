@@ -7,12 +7,12 @@ Go To Form Student
     Wait for Elements State     css=h1 >> text=Novo aluno                           visible                     5
 
 New Student
-    [Arguments]                 ${name}     ${email}    ${age}      ${weight}       ${feet_tall}  
+    [Arguments]                 ${student}  
 
-    Fill Text                   css=input[name=name]                                ${name}
-    Fill Text                   css=input[name=email]                               ${email}
-    Fill Text                   css=input[name=age]                                 ${age}
-    Fill Text                   css=input[name=weight]                              ${weight}
-    Fill Text                   css=input[name=feet_tall]                           ${feet_tall}
+    Fill Text                   css=input[name=name]                                ${student.name}
+    Fill Text                   css=input[name=email]                               ${student.email}
+    Fill Text                   css=input[name=age]                                 ${student.age}
+    Fill Text                   css=input[name=weight]                              ${student.weight}
+    Fill Text                   css=input[name=feet_tall]                           ${student.feet_tall}
 
     Click                       xpath=//button[contains(text(), "Salvar")]  
