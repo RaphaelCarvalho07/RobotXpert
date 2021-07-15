@@ -5,6 +5,8 @@ Resource                        ../resources/base.robot
 
 Suite Setup                     Start Admin Session
 
+Library                         Collections
+
 *** Test Cases ***
 Novo aluno
 
@@ -36,7 +38,34 @@ Não deve permitir email duplicado
     Insert Student              ${student}
     Go To Students
     Go To Form Student
-    New Student                 ${student}
+    New Student                 student=${student}
     Toaster Text Should Be      Email já existe no sistema.
 
     [Teardown]                  Thinking And Take Screenshot                        2
+
+Todos os campos devem ser obrigatórios
+    [Tags]                      temp
+
+    
+    @{expected_alerts}          Set Variable
+    ...                         Nome é obrigatório
+    ...                         O e-mail é obrigatório
+    ...                         idade é obrigatória
+    ...                         o peso é obrigatório
+    ...                         a Altura é obrigatória
+
+    @{got_alert}                Create List
+
+    Go To Students
+    Go To Form Student
+    Submit Student Form
+
+    FOR                     ${index}                IN RANGE        1       6
+        ${span}             Get Required Alerts     ${index}
+        Append to List      ${got_alert}            ${span}
+    END
+
+    Log                     ${expected_alerts}
+    Log                     ${got_alert}
+
+    Lists Should Be Equal   ${expected_alerts}      ${got_alert}
