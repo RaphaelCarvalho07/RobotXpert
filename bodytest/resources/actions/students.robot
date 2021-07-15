@@ -1,6 +1,14 @@
 *** Settings ***
 Documentation                   Ações da feature de gestão de alunos
 
+*** Variables ***
+${NAME_FIELD}                   css=input[name=name]
+${EMAIL_FIELD}                  css=input[name=email]
+${AGE_FIELD}                    css=input[name=age]
+${EMAIL_FIELD}                  css=input[name=email]
+${WEIGHT_FIELD}                 css=input[name=weight]
+${FEET_TALL_FIELD}              css=input[name=feet_tall]
+
 *** Keywords ***
 Go To Form Student
     Click                       css=a[href$="alunos/new"] 
@@ -12,10 +20,10 @@ Submit Student Form
 New Student
     [Arguments]                 ${student}  
 
-    Fill Text                   css=input[name=name]                                ${student.name}
-    Fill Text                   css=input[name=email]                               ${student.email}
-    Fill Text                   css=input[name=age]                                 ${student.age}
-    Fill Text                   css=input[name=weight]                              ${student.weight}
-    Fill Text                   css=input[name=feet_tall]                           ${student.feet_tall}
+    Fill Text                   ${NAME_FIELD}                                       ${student.name}
+    Fill Text                   ${EMAIL_FIELD}                                      ${student.email}
+    Fill Text                   ${AGE_FIELD}                                        ${student.age}
+    Fill Text                   ${WEIGHT_FIELD}                                     ${student.weight}
+    Fill Text                   ${FEET_TALL_FIELD}                                  ${student.feet_tall}
 
     Submit Student Form

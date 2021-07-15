@@ -7,6 +7,14 @@ Suite Setup                     Start Admin Session
 
 Library                         Collections
 
+*** Keywords ***
+Check Type Field On Student Form
+    [Arguments]                 ${element}                          ${type}
+
+    Go To Students
+    Go To Form Student
+    Field Should Be Type        ${element}                          ${type}                               
+
 *** Test Cases ***
 Novo aluno
 
@@ -23,7 +31,7 @@ Novo aluno
     New Student                 ${student}
     Toaster Text Should Be      Aluno cadastrado com sucesso.
 
-    [Teardown]                  Thinking And Take Screenshot                        2
+    [Teardown]                  Thinking And Take Screenshot        2
 
 Não deve permitir email duplicado
     [Tags]                      dup
@@ -41,11 +49,10 @@ Não deve permitir email duplicado
     New Student                 student=${student}
     Toaster Text Should Be      Email já existe no sistema.
 
-    [Teardown]                  Thinking And Take Screenshot                        2
+    [Teardown]                  Thinking And Take Screenshot        2
 
 Todos os campos devem ser obrigatórios
-    [Tags]                      temp
-
+    
     
     @{expected_alerts}          Set Variable
     ...                         Nome é obrigatório
@@ -60,12 +67,24 @@ Todos os campos devem ser obrigatórios
     Go To Form Student
     Submit Student Form
 
-    FOR                     ${index}                IN RANGE        1       6
-        ${span}             Get Required Alerts     ${index}
-        Append to List      ${got_alert}            ${span}
+    FOR                         ${index}                            IN RANGE       1       6
+        ${span}                 Get Required Alerts                 ${index}
+        Append to List          ${got_alert}                        ${span}
     END
 
-    Log                     ${expected_alerts}
-    Log                     ${got_alert}
+    Log                         ${expected_alerts}
+    Log                         ${got_alert}
 
-    Lists Should Be Equal   ${expected_alerts}      ${got_alert}
+    Lists Should Be Equal       ${expected_alerts}                  ${got_alert}
+
+Validate Number Type
+    [Tags]                      temp
+    [Template]                  Check Type Field On Student Form
+    ${AGE_FIELD}                number
+    ${WEIGHT_FIELD}             number    
+    ${FEET_TALL_FIELD}          number
+
+Validate Email Type    
+    [Tags]                      temp
+    [Template]                  Check Type Field On Student Form
+    ${EMAIL_FIELD}              email
