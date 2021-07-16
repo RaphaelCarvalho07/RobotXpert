@@ -7,7 +7,7 @@ Suite Setup                     Start Browser Session
 Test Teardown                   Take Screenshot
 
 ***Test Cases***
-Login do Administrador
+Cenário: Login do Administrador
     [tags]                      admin
     Go To Login Page
     Login With                  admin@bodytest.com              pwd123                 
@@ -15,7 +15,7 @@ Login do Administrador
 
     [Teardown]                  Clear LS And Take Screenshot
 
-Senha incorreta
+Cenário: Senha incorreta
     Go To Login Page    
     Login With                  admin@bodytest.com              abc123            
     
@@ -23,7 +23,7 @@ Senha incorreta
 
     [Teardown]                  Thinking And Take Screenshot    2
 
-Email não cadastrado
+Cenário: Email não cadastrado
     Go To Login Page    
     Login With                  rapha@gmail.com              abc123            
     
@@ -32,26 +32,26 @@ Email não cadastrado
     [Teardown]                  Thinking And Take Screenshot    2
 
 
-Email incorreto
+Cenário: Email incorreto
     Go To Login Page    
     Login With                  admin&bodytest.com              abc123            
     
     Alert Text Should be        Informe um e-mail válido
 
 
-Senha não informada
+Cenário: Senha não informada
     Go To Login Page    
     Login With                  admin&bodytest.com              ${EMPTY}             
 
     Alert Text Should be        A senha é obrigatória
 
-Email não informado
+Cenário: Email não informado
     Go To Login Page    
     Login With                  ${EMPTY}                        abc123       
 
     Alert Text Should be        O e-mail é obrigatório
 
-Email e Senha não informados
+Cenário: Email e Senha não informados
     Go To Login Page
     Login With                  ${EMPTY}                        ${EMPTY}
 

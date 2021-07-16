@@ -4,8 +4,7 @@ Documentation                   Cadastro de alunos
 Resource                        ../resources/base.robot
 
 Suite Setup                     Start Admin Session
-
-Library                         Collections
+Test Teardown                   Take Screenshot
 
 *** Keywords ***
 Check Type Field On Student Form
@@ -16,7 +15,7 @@ Check Type Field On Student Form
     Field Should Be Type        ${element}                          ${type}                               
 
 *** Test Cases ***
-Novo aluno
+Cenário: Novo aluno
 
     &{student}                  Create Dictionary
     ...                         name=Rapha Koi
@@ -33,7 +32,7 @@ Novo aluno
 
     [Teardown]                  Thinking And Take Screenshot        2
 
-Não deve permitir email duplicado
+Cenário: Não deve permitir email duplicado
     [Tags]                      dup
 
     &{student}                  Create Dictionary
@@ -51,7 +50,7 @@ Não deve permitir email duplicado
 
     [Teardown]                  Thinking And Take Screenshot        2
 
-Todos os campos devem ser obrigatórios
+Cenário: Todos os campos devem ser obrigatórios
     
     
     @{expected_alerts}          Set Variable
@@ -77,14 +76,14 @@ Todos os campos devem ser obrigatórios
 
     Lists Should Be Equal       ${expected_alerts}                  ${got_alert}
 
-Validate Number Type
+Cenário: Validação dos campos numéricos
     [Tags]                      temp
     [Template]                  Check Type Field On Student Form
     ${AGE_FIELD}                number
     ${WEIGHT_FIELD}             number    
     ${FEET_TALL_FIELD}          number
 
-Validate Email Type    
+Cenário: Validar campo do tipo email
     [Tags]                      temp
     [Template]                  Check Type Field On Student Form
     ${EMAIL_FIELD}              email
