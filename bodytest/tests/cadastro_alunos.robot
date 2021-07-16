@@ -87,3 +87,18 @@ Cenário: Validar campo do tipo email
     [Tags]                      temp
     [Template]                  Check Type Field On Student Form
     ${EMAIL_FIELD}              email
+
+Cenário: Menor de 14 anos não pode fazer cadastro
+
+    &{student}                  Create Dictionary
+    ...                         name=Kael Koi
+    ...                         email=kael@gmail.com
+    ...                         age=13
+    ...                         weight=60
+    ...                         feet_tall=1.70   
+
+    Go To Students
+    Go To Form Student
+    New Student                 student=${student}
+    Alert Text Should be        expected_text= A idade deve ser maior ou igual 14 anos       
+
