@@ -12,7 +12,7 @@ ${FEET_TALL_FIELD}              css=input[name=feet_tall]
 *** Keywords ***
 Go To Form Student
     Click                       css=a[href$="alunos/new"] 
-    Wait for Elements State     css=h1 >> text=Novo aluno                           visible                     5
+    Wait for Elements State     css=h1 >> text=Novo aluno                           visible                 5
 
 Submit Student Form
     Click                       xpath=//button[contains(text(), "Salvar")]    
@@ -27,3 +27,23 @@ New Student
     Fill Text                   ${FEET_TALL_FIELD}                                  ${student.feet_tall}
 
     Submit Student Form
+
+Request Removal By Email
+    [Arguments]                 ${email}
+    Click                       xpath=//td[contains(text(),"${email}")]/../td//button[@id="trash"]    
+
+Confirm Removal
+    Click                       text=SIM, pode apagar!
+
+Cancel Removal       
+    Click                       text=NÃO
+
+Student Should Not Be Visible
+    [Arguments]                 ${email}
+
+    Wait For Elements State     xpath=//td[contains(text(),"${email}")]             detached                5
+
+Student Should Be Visible
+    [Arguments]                 ${email}
+
+    Wait For Elements State     xpath=//td[contains(text(),"${email}")]             visible                 5    

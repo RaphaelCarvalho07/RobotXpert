@@ -51,7 +51,7 @@ Cenário: Não deve permitir email duplicado
     [Teardown]                  Thinking And Take Screenshot        2
 
 Cenário: Todos os campos devem ser obrigatórios
-    
+    [Tags]                      temp
     
     @{expected_alerts}          Set Variable
     ...                         Nome é obrigatório
