@@ -1,0 +1,21 @@
+{
+  "name": "bodytest-web",
+  "version": "1.0.0",
+  "description": "BodyTest for QA Ninja Academy",
+  "main": "server.js",
+  "scripts": {
+    "start": "API_URL=development node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "qaninja"
+  ],
+  "author": "Papito",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.16.4",
+    "json-server": "^0.12.1",
+    "nodemon": "^1.19.1"
+  }
+}
