@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation                   Cadastro de alunos
 
-Resource                        ../resources/base.robot
+Resource                        ${EXECDIR}/resources/base.robot
 
 Suite Setup                     Start Admin Session
 Test Teardown                   Take Screenshot
