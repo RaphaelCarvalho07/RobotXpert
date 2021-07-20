@@ -116,3 +116,4 @@ dmypy.json
 # Ignorar arquivos gerados após cada execução de log, report, output, etc
 start/Logs/
 bodytest/Logs/
+bodytest/deploys/1.2.1/pacote-web/Deploy.md
