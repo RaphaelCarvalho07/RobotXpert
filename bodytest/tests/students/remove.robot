@@ -18,12 +18,13 @@ Cenário: Remover aluno cadastrado
 
     Insert Student                      ${student}
     Go To Students
+    Search Student By Name              name=${student.name}        
     Request Removal By Email            email=${student.email}
     Confirm Removal
     Toaster Text Should Be              expected_text=Aluno removido com sucesso.
     Student Should Not Be Visible       email=${student.email}
 
-    [Teardown]                          Thinking And Take Screenshot        2
+    [Teardown]                          Thinking And Take Screenshot            2
 
 Cenário: Desistir da exclusão    
 
@@ -36,6 +37,7 @@ Cenário: Desistir da exclusão
 
     Insert Student                      ${student}
     Go To Students
+    Search Student By Name              name=${student.name}   
     Request Removal By Email            email=${student.email}
     Cancel Removal
-    Student Should Be Visible           email=${student.email}
+    Student Should Be Visible           email=${student.email}      
