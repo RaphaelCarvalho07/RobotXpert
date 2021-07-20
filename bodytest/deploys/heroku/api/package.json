@@ -1,6 +1,6 @@
 {
   "name": "api-bodytest",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "engines": {
     "node": "12.20.2"
   },
