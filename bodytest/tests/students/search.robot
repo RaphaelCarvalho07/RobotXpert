@@ -1,12 +1,10 @@
 *** Settings ***
 Documentation                                   Buscar Alunos
 
-Library                                         OperatingSystem
-
 Resource                                        ${EXECDIR}/resources/base.robot
 
-# Suite Setup                                     Start Admin Session
-# Test Teardown                                   Take Screenshot
+Suite Setup                                     Start Admin Session
+Test Teardown                                   Take Screenshot
 
 *** Test Cases ***
 Cenário: Busca exata
@@ -35,16 +33,31 @@ Cenário: Registro não encontrado
     Register Should Not Be Found    
 
 Cenário: Busca alunos por um único termo
-    [Tags]     json
+    [Tags]     json 
 
     # David
     # David Guetta
     # David Bowie    
     # David Beckham
-    ${file}=                                    Get File                                        ${EXECDIR}/resources/fixtures/students-search.json
-    ${json_object}                              Evaluate                                        json.loads($file)                                           json
-    # Log To Console                              ${json_object['students']}
 
-    FOR                                         ${item}                                         IN                                                          @{json_object['students']}
-        Log To Console                          ${item['name']}
+    ${fixture}                                  Get JSON                                        file_name=students-search.json
+
+    ${students}                                 Set Variable                                    ${fixture['students']}
+
+    ${word}                                     Set Variable                                    ${fixture['word']}
+    ${total}                                    Set Variable                                    ${fixture['total']}
+
+    Remove Student By Name                      name=${word}
+
+    FOR                                         ${item}                                         IN                                                   @{students}
+        Insert Student                          ${item}
     END
+
+    Go To Students
+    Search Student By Name                      name=${word}
+    
+    FOR                                         ${item}                                         IN                                                   @{students}
+        Student Name Should Be Visible          name=${item['name']}
+    END
+
+    Total Items Should Be                       number=${total}

@@ -3,7 +3,8 @@ Documentation       Tudo começa aqui, meu arquivo base do projeto de automaçã
 
 Library             Browser
 Library             Collections
-Library             libs/DeloreanLibrary.py
+Library             OperatingSystem
+Library             libs/DeloreanLibrary.py                           
 
 Resource            actions/auth.robot     
 Resource            actions/students.robot
@@ -13,7 +14,7 @@ Resource            actions/components.robot
 
 *** Keywords ***
 Start Browser Session
-    New Browser                 chromium                        true          
+    New Browser                 chromium                        ${headless}          
     New Page                    about:blank
 
 Start Admin Session
@@ -31,3 +32,12 @@ Thinking And Take Screenshot
     
     Sleep               ${timeout}
     Take Screenshot
+
+### Helpers
+Get JSON
+    [Arguments]                                 ${file_name}
+
+    ${file}=                                    Get File                                        ${EXECDIR}/resources/fixtures/${file_name}
+    ${json_object}                              Evaluate                                        json.loads($file)                                    json 
+
+    [Return]                                    ${json_object}    
