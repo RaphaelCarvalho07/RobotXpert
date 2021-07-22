@@ -38,6 +38,6 @@ Get JSON
     [Arguments]                                 ${file_name}
 
     ${file}=                                    Get File                                        ${EXECDIR}/resources/fixtures/${file_name}
-    ${json_object}                              Evaluate                                        json.loads($file)                                    json 
+    ${json_object}                              Evaluate                                        robot.utils.dotdict.DotDict(json.loads($file))                                    json 
 
     [Return]                                    ${json_object}    

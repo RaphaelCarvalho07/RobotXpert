@@ -42,10 +42,10 @@ Cenário: Busca alunos por um único termo
 
     ${fixture}                                  Get JSON                                        file_name=students-search.json
 
-    ${students}                                 Set Variable                                    ${fixture['students']}
+    ${students}                                 Set Variable                                    ${fixture.students}
 
-    ${word}                                     Set Variable                                    ${fixture['word']}
-    ${total}                                    Set Variable                                    ${fixture['total']}
+    ${word}                                     Set Variable                                    ${fixture.word}
+    ${total}                                    Set Variable                                    ${fixture.total}
 
     Remove Student By Name                      name=${word}
 
