@@ -22,7 +22,7 @@ Cenário: Atualizar um aluno já cadastrado
     Go To Students
     Search Student By Name          name=${kamalakhan.name}
     Go To Student Update Form       email=${kamalakhan.email}
-    Update A Student                student=${msmarvel}       
+    Fill Form Student               student=${msmarvel}       
     Toaster Text Should Be          expected_text=Aluno atualizado com sucesso.
 
     [Teardown]                      Thinking And Take Screenshot                                            2
@@ -35,13 +35,13 @@ Go To Student Update Form
     Click                           xpath=//td[contains(text(), "${email}")]/..//a[@class="edit"]
     Wait for Elements State         css=h1 >> text=Edição de aluno                                          visible                                 5
 
-Update A Student
-    [Arguments]                     ${student}  
+# Update A Student
+#     [Arguments]                     ${student}  
 
-    Fill Text                       ${NAME_FIELD}                                       ${student.name}
-    Fill Text                       ${EMAIL_FIELD}                                      ${student.email}
-    Fill Text                       ${AGE_FIELD}                                        ${student.age}
-    Fill Text                       ${WEIGHT_FIELD}                                     ${student.weight}
-    Fill Text                       ${FEET_TALL_FIELD}                                  ${student.feet_tall}
+#     Fill Text                       ${NAME_FIELD}                                       ${student.name}
+#     Fill Text                       ${EMAIL_FIELD}                                      ${student.email}
+#     Fill Text                       ${AGE_FIELD}                                        ${student.age}
+#     Fill Text                       ${WEIGHT_FIELD}                                     ${student.weight}
+#     Fill Text                       ${FEET_TALL_FIELD}                                  ${student.feet_tall}
 
-    Submit Student Form
+#     Submit Student Form

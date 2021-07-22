@@ -17,7 +17,7 @@ Go To Form Student
 Submit Student Form
     Click                           xpath=//button[contains(text(), "Salvar")]    
 
-New Student
+Fill Form Student
     [Arguments]                     ${student}  
 
     Fill Text                       ${NAME_FIELD}                                       ${student.name}

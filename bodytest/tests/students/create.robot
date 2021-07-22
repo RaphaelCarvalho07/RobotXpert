@@ -27,7 +27,7 @@ Cenário: Novo aluno
     Remove Student              ${student.email}
     Go To Students
     Go To Form Student
-    New Student                 ${student}
+    Fill Form Student           student=${student}
     Toaster Text Should Be      Aluno cadastrado com sucesso.
 
     [Teardown]                  Thinking And Take Screenshot        2
@@ -45,7 +45,7 @@ Cenário: Não deve permitir email duplicado
     Insert Student              ${student}
     Go To Students
     Go To Form Student
-    New Student                 student=${student}
+    Fill Form Student           student=${student}
     Toaster Text Should Be      Email já existe no sistema.
 
     [Teardown]                  Thinking And Take Screenshot        2
@@ -99,6 +99,6 @@ Cenário: Menor de 14 anos não pode fazer cadastro
 
     Go To Students
     Go To Form Student
-    New Student                 student=${student}
+    Fill Form Student           student=${student}
     Alert Text Should be        expected_text= A idade deve ser maior ou igual 14 anos       
 
