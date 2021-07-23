@@ -10,7 +10,6 @@ ${WEIGHT_FIELD}                     css=input[name=weight]
 ${FEET_TALL_FIELD}                  css=input[name=feet_tall]
 
 *** Keywords ***
-
 ## Forms
 Submit Student Form
     Click                           xpath=//button[contains(text(), "Salvar")]    
