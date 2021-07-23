@@ -61,7 +61,7 @@ Cenário: Validar Campos Obrigatórios
 
     [Teardown]                      Thinking And Take Screenshot                    2
 
-Desistir do Cadastro do Novo Plano
+Cenário: Desistir do Cadastro do Novo Plano
     [Tags]                          temp
     
     &{plan}                         Create Dictionary       
@@ -74,7 +74,29 @@ Desistir do Cadastro do Novo Plano
     Go To Form Plan
     Fill Plan Form                  plan=${plan}
     Give Up Registration
-    Check If Page Plans  
+    Check If Page Plans
+
+Cenário: Validar Limite Máximo de Caracteres Campo Title
+    [Tags]                          temp
+
+    &{plan}                         Create Dictionary       
+    ...                             title=Too Many Characters
+    ...                             duration=6
+    ...                             price=80,00  
+    ...                             total=R$ 480,00
+
+    Go To Plans
+    Go To Form Plan
+    ${plan.title}                   Insert Too Many Characters
+    Fill Plan Form                  plan=${plan}       
+    Submit Plan Form
+    Toaster Text Should Be          Erro cadastrar aluno!      #os toasters estão vindo com mensagem relacionada aos Alunos.
+
+    [Teardown]                      Thinking And Take Screenshot                    2
+    
+
+
+
 
 
 
