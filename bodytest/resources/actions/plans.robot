@@ -24,7 +24,13 @@ Go To Form Plan
     Click                           css=a[href$="planos/new"] 
     Wait for Elements State         css=h1 >> text=Novo plano                   visible                 5
 
+Give Up Registration
+    Click                           text=Voltar    
+
 ## Validations
 Total Plan Should Be
     [Arguments]                     ${total}
     Get Attribute                   ${TOTAL_FIELD}                              value                   ==      ${total}
+
+Check If Page Plans                   
+    Wait For Elements State         css=h1 >> text=Gestão de Planos             visible                 5    

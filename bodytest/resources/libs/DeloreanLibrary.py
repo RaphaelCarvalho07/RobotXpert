@@ -49,4 +49,15 @@ class DeloreanLibrary():
         cur = conn.cursor()
         cur.execute(query)
         conn.commit()
-        conn.close        
+        conn.close
+        
+    def remove_plan_by_title(self, title):
+        query = ("delete from plans where title = '{}'").format(title)
+        info(query)
+
+        conn = self.connect()
+
+        cur=conn.cursor()
+        cur.execute(query)
+        conn.commit()
+        conn.close            
