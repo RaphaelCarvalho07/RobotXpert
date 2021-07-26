@@ -52,12 +52,25 @@ class DeloreanLibrary():
         conn.close
         
     def remove_plan_by_title(self, title):
-        query = ("delete from plans where title = '{}'").format(title)
+        query = ("delete from plans where title LIKE '%{}%'").format(title)
         info(query)
 
         conn = self.connect()
 
-        cur=conn.cursor()
+        cur = conn.cursor()
+        cur.execute(query)
+        conn.commit()
+        conn.close            
+
+    def insert_plan(self, plan):
+        query = ("insert into plans (title, duration, price, created_at, updated_at)"
+                "values('{}', {}, {}, NOW(), NOW());"
+                .format(plan['title'], plan['duration'], plan['price']))
+        info(query)
+
+        conn = self.connect()
+
+        cur = conn.cursor()
         cur.execute(query)
         conn.commit()
         conn.close            

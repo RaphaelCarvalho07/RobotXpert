@@ -19,6 +19,10 @@ Fill Plan Form
     Fill Text                       ${DURATION_FIELD}                           ${plan.duration}
     Fill Text                       ${PRICE_FIELD}                              ${plan.price}
 
+Search Plan By Title
+    [Arguments]                     ${title}
+    Fill Text                       css=input[placeholder="Buscar plano"]       ${title}                                      
+
 ## Links & Buttons
 Go To Form Plan
     Click                           css=a[href$="planos/new"] 
@@ -30,7 +34,12 @@ Give Up Registration
 ## Validations
 Total Plan Should Be
     [Arguments]                     ${total}
-    Get Attribute                   ${TOTAL_FIELD}                              value                   ==      ${total}
+    Get Attribute                   ${TOTAL_FIELD}                              value                   ==          ${total}
 
 Check If Page Plans                   
     Wait For Elements State         css=h1 >> text=Gestão de Planos             visible                 5    
+
+Plan Title Should Be Visible
+    [Arguments]                     ${title}
+
+    Wait For Elements State         css=table tbody tr >> text=${title}                                  visible     5    

@@ -4,7 +4,7 @@ Documentation                       Cadastro de Planos
 Resource                            ${EXECDIR}/resources/base.robot
 
 Suite Setup                         Start Admin Session
-Test Teardown                       Take Screenshot
+Test Teardown                       Thinking And Take Screenshot                    timeout=2
 
 *** Test Cases ***
 Cenário: Calcular preço total do plano
@@ -20,6 +20,8 @@ Cenário: Calcular preço total do plano
     Fill Plan Form                  plan=${plan}
     Total Plan Should Be            total=${plan.total}
 
+    [Teardown]                      Take Screenshot
+
 Cenário: Cadastrar Novo Plano
     [Tags]                          temp
     &{plan}                         Create Dictionary       
@@ -34,8 +36,7 @@ Cenário: Cadastrar Novo Plano
     Fill Plan Form                  plan=${plan}
     Submit Plan Form
     Toaster Text Should Be          expected_text=Plano cadastrado com sucesso
-
-    [Teardown]                      Thinking And Take Screenshot                    2      
+    Total Items Should Be           number=1
 
 Cenário: Validar Campos Obrigatórios
     [Tags]                          temp
@@ -59,8 +60,6 @@ Cenário: Validar Campos Obrigatórios
 
     Lists Should Be Equal           ${expected_alerts}                              ${got_alert}
 
-    [Teardown]                      Thinking And Take Screenshot                    2
-
 Cenário: Desistir do Cadastro do Novo Plano
     [Tags]                          temp
     
@@ -68,22 +67,22 @@ Cenário: Desistir do Cadastro do Novo Plano
     ...                             title=Desistir do Plano
     ...                             duration=6
     ...                             price=80,00  
-    ...                             total=R$ 480,00
 
     Go To Plans
     Go To Form Plan
     Fill Plan Form                  plan=${plan}
     Give Up Registration
     Check If Page Plans
+    
+    [Teardown]                      Take Screenshot
 
-Cenário: Validar Limite Máximo de Caracteres Campo Title
+Cenário: Validar Limite Máximo de Caracteres campo Title
     [Tags]                          temp
 
     &{plan}                         Create Dictionary       
     ...                             title=Too Many Characters
     ...                             duration=6
     ...                             price=80,00  
-    ...                             total=R$ 480,00
 
     Go To Plans
     Go To Form Plan
@@ -92,8 +91,67 @@ Cenário: Validar Limite Máximo de Caracteres Campo Title
     Submit Plan Form
     Toaster Text Should Be          Erro cadastrar aluno!      #os toasters estão vindo com mensagem relacionada aos Alunos.
 
-    [Teardown]                      Thinking And Take Screenshot                    2
-    
+Cenário: Validar Limite Máximo de Duração do Plano
+    [Tags]                          temp
+
+    &{plan}                         Create Dictionary       
+    ...                             title=Too Many Duration's Month
+    ...                             duration=61
+    ...                             price=30,00  
+
+    Go To Plans
+    Go To Form Plan
+    Fill Plan Form                  plan=${plan}
+    Submit Plan Form
+    Alert Text Should be            expected_text=A duração dever ser no máximo 60 meses 
+
+Cenário: Informar valor R$ 0,00 no campo Preço Mensal
+    [Tags]                          temp
+
+    &{plan}                         Create Dictionary       
+    ...                             title=Price like 0,00
+    ...                             duration=12
+    ...                             price=0,00  
+
+    Go To Plans
+    Go To Form Plan
+    Fill Plan Form                  plan=${plan}
+    Submit Plan Form
+    Toaster Text Should Be          expected_text=O valor do plano deve ser maior que zero!
+
+Cenário: Validar Limite Máximo de Valor do Plano
+    [Tags]                          temp
+
+    &{plan}                         Create Dictionary       
+    ...                             title=Amount higher than allowed
+    ...                             duration=12
+    ...                             price=800000000,00
+
+    Go To Plans
+    Go To Form Plan
+    Fill Plan Form                  plan=${plan}
+    Submit Plan Form
+    Toaster Text Should Be          expected_text=Erro cadastrar aluno!
+
+Cenário: Criar Plano duplicado
+    [Tags]                          temp1
+
+    &{plan}                         Create Dictionary       
+    ...                             title=Duplicated Plan
+    ...                             duration=12
+    ...                             price=50.00
+
+    Remove Plan By Title            ${plan.title}
+    Insert Plan                     ${plan}
+    Go To Plans
+    Go To Form Plan
+    Fill Plan Form                  plan=${plan}
+    Submit Plan Form                
+    Toaster Text Should Be          expected_text=Plano cadastrado com sucesso
+    Check If Page Plans
+    Search Plan By Title            title=${plan.title}
+    Plan Title Should Be Visible    title=${plan.title}
+    Total Items Should Be           2
 
 
 
