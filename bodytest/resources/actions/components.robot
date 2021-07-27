@@ -42,4 +42,13 @@ Insert Too Many Characters
     ${varchar}                     Replace Variables                                       11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111264
     [Return]                       ${varchar}  
 
-       
+### links & Buttons
+Request Removal By Key
+    [Arguments]                     ${key}
+    Click                           xpath=//td[contains(text(),"${key}")]/../td//button[@id="trash"]    
+
+Confirm Removal
+    Click                           text=SIM, pode apagar!
+
+Cancel Removal       
+    Click                           text=NÃO        

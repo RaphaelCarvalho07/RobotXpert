@@ -52,16 +52,6 @@ Go To Student Update Form
     Click                           xpath=//td[contains(text(), "${email}")]/..//a[@class="edit"]
     Wait for Elements State         css=h1 >> text=Edição de aluno                                              visible                 5     
 
-Request Removal By Email
-    [Arguments]                     ${email}
-    Click                           xpath=//td[contains(text(),"${email}")]/../td//button[@id="trash"]    
-
-Confirm Removal
-    Click                           text=SIM, pode apagar!
-
-Cancel Removal       
-    Click                           text=NÃO
-
 ## Validations
 Student Should Not Be Visible
     [Arguments]                     ${email}

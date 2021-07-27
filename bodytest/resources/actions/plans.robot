@@ -34,7 +34,7 @@ Give Up Registration
 ## Validations
 Total Plan Should Be
     [Arguments]                     ${total}
-    Get Attribute                   ${TOTAL_FIELD}                              value                   ==          ${total}
+    Get Attribute                   ${TOTAL_FIELD}                              value                   ==              ${total}
 
 Check If Page Plans                   
     Wait For Elements State         css=h1 >> text=Gestão de Planos             visible                 5    
@@ -42,4 +42,9 @@ Check If Page Plans
 Plan Title Should Be Visible
     [Arguments]                     ${title}
 
-    Wait For Elements State         css=table tbody tr >> text=${title}                                  visible     5    
+    Wait For Elements State         css=table tbody tr >> text=${title}                                  visible        5
+
+Plan Title Should Not Be Visible
+    [Arguments]                     ${title}
+
+    Wait For Elements State         css=table tbody tr >> text=${title}                                  detached       5         
