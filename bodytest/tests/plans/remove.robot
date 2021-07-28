@@ -73,7 +73,7 @@ Cenário: Desistir da Exclusão do Plano Teclando ESC
     ...                                     price=38.00
 
     Remove Plan By Title                    title=${plan.title}
-    Insert Plan                             ${plan}
+    Insert Plan                             plan=${plan}
 
     Go To Plans
     Search Plan By Title                    title=${plan.title}

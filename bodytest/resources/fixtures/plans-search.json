@@ -1,0 +1,21 @@
+{   
+    "word": "Marvel",
+    "total": 3,
+    "plans": [
+        {
+            "title": "Marvel Wolverine",
+            "duration": "1",
+            "price": 160.00
+        },
+        {
+            "title": "Marvel Juggernaut",
+            "duration": "8",
+            "price": 800.00
+        },
+        {
+            "title": "Marvel Hulk",
+            "duration": "30",
+            "price": 250.00
+        }
+    ]
+}

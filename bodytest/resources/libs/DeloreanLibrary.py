@@ -12,6 +12,8 @@ class DeloreanLibrary():
         )
 
     # No Robot vira uma KW automágicamente => Remove Student      email@desejado.com
+    
+    ### Removes
     def remove_student(self, email):
 
         query = "delete from students where email = '{}'".format(email)
@@ -35,6 +37,29 @@ class DeloreanLibrary():
         conn.commit()
         conn.close
 
+    def remove_plan_by_title(self, title):
+        query = ("delete from plans where title LIKE '%{}%'").format(title)
+        info(query)
+
+        conn = self.connect()
+
+        cur = conn.cursor()
+        cur.execute(query)
+        conn.commit()
+        conn.close          
+
+    def remove_all_registers_from_table(self, table):
+        query = "delete from {}".format(table)
+        info(query)
+
+        conn = self.connect()
+
+        cur = conn.cursor()
+        cur.execute(query)
+        conn.commit()
+        conn.close            
+
+    ### Inserts
     def insert_student(self, student):
 
         self.remove_student(student['email'])
@@ -49,18 +74,7 @@ class DeloreanLibrary():
         cur = conn.cursor()
         cur.execute(query)
         conn.commit()
-        conn.close
-        
-    def remove_plan_by_title(self, title):
-        query = ("delete from plans where title LIKE '%{}%'").format(title)
-        info(query)
-
-        conn = self.connect()
-
-        cur = conn.cursor()
-        cur.execute(query)
-        conn.commit()
-        conn.close            
+        conn.close        
 
     def insert_plan(self, plan):
         query = ("insert into plans (title, duration, price, created_at, updated_at)"
@@ -73,4 +87,4 @@ class DeloreanLibrary():
         cur = conn.cursor()
         cur.execute(query)
         conn.commit()
-        conn.close            
+        conn.close

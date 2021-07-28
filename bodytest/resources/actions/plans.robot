@@ -42,9 +42,9 @@ Check If Page Plans
 Plan Title Should Be Visible
     [Arguments]                     ${title}
 
-    Wait For Elements State         css=table tbody tr >> text=${title}                                  visible        5
+    Wait For Elements State         css=table tbody tr >> text=${title}                                 visible         5
 
 Plan Title Should Not Be Visible
     [Arguments]                     ${title}
 
-    Wait For Elements State         css=table tbody tr >> text=${title}                                  detached       5         
+    Wait For Elements State         css=table tbody tr >> text=${title}                                 detached        5           
