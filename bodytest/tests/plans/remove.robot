@@ -83,7 +83,7 @@ Cenário: Desistir da Exclusão do Plano Teclando ESC
     Plan Title Should Be Visible            title=${plan.title}
 
 Cenário: Desistir da Exclusão do Plano Teclando ENTER
-    [Tags]                                  temp1
+    [Tags]                                  temp
 
     &{plan}                                 Create Dictionary
     ...                                     title=Cancel Remove Registered Plan With Key ENTER
